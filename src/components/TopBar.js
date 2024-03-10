@@ -10,7 +10,7 @@ const TopBar = ({ profileImageUrl }) => {
   };
   return (
     <>
-      <div className="top-bar">
+      <div className="top-fixed top-bar">
         <div className="first-portion">
           <button className="" type="button" onClick={handleMenuClick}>
             {isMenuOpen ? (
@@ -27,7 +27,12 @@ const TopBar = ({ profileImageUrl }) => {
             <img
               src={profileImageUrl}
               alt="Profile"
-              style={{ width: "40px", height: "40px", borderRadius: "50%" }}
+              style={{
+                width: "50px",
+                height: "50px",
+                borderRadius: "50%",
+                border: "2px solid white",
+              }}
             />
           </a>
         </div>
