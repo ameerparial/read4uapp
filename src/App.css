@@ -104,7 +104,6 @@ input:focus {
   opacity: 80%;
   display: flex;
   justify-content: space-between;
-  position: fixed;
 }
 
 .first-portion {
@@ -136,10 +135,9 @@ input:focus {
   background-color: #022249;
   opacity: 80%;
   width: 100%;
-  margin-top: 66px;
   margin-left: -12px;
 }
-.sidebar li a {
+.sidebar li .nav-link {
   border-bottom: 1px solid #df622c;
   padding-top: 20px;
   padding-left: 20px;
@@ -155,5 +153,5 @@ input:focus {
 }
 
 .dash-con {
-  margin-top: 90px;
+  margin-top: 40px;
 }
