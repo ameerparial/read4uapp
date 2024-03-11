@@ -12,8 +12,7 @@ function App() {
           <Route Component={LoginComponent} path="/login" />
           <Route Component={RegisterComponent} path="/register" />
           <Route path="dashboard" element={<DashboardComponent />}>
-            <Route path="orders" element={<span>I can container</span>} />
-            <Route path="products" element={<span>Products</span>} />
+            <Route path=":route" element={<span>I can container</span>} />
           </Route>
         </Routes>
       </BrowserRouter>
