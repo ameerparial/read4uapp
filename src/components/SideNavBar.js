@@ -7,10 +7,10 @@ const SideNavbar = () => {
       <div className="sidebar-sticky">
         <ul className="nav flex-column">
           <li className="nav-item">
-            <a className="nav-link active" href="/dashboard">
+            <NavLink to={"dashboard"} className="nav-link">
               <i className="fas fa-home me-2"></i>
               Dashboard
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item">
             <NavLink to={"orders"} className="nav-link">
