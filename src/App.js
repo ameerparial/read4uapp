@@ -3,6 +3,7 @@ import LoginComponent from "./components/LoginPage";
 import RegisterComponent from "./components/RegisterPage";
 import DashboardComponent from "./components/Dashboard";
 import "./App.css";
+import Container from "./components/Data-Container";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
           <Route Component={LoginComponent} path="/login" />
           <Route Component={RegisterComponent} path="/register" />
           <Route path="dashboard" element={<DashboardComponent />}>
-            <Route path=":route" element={<span>I can container</span>} />
+            <Route path=":route" element={<Container />} />
           </Route>
         </Routes>
       </BrowserRouter>
