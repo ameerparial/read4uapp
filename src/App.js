@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginComponent from "./components/LoginPage";
 import RegisterComponent from "./components/RegisterPage";
 import DashboardComponent from "./components/Dashboard";
-import "./App.css";
 import Container from "./components/Data-Container";
 
 function App() {
