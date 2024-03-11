@@ -152,6 +152,12 @@ input:focus {
   padding-left: 30px;
 }
 
+.sidebar li .active-me {
+  box-shadow: 2px 2px 10px #022249;
+  color: #96ffff;
+  padding-left: 30px;
+}
+
 .dash-con {
   margin-top: 40px;
 }
