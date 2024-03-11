@@ -1,10 +1,13 @@
 import { Outlet } from "react-router";
+import { useParams } from "react-router-dom";
 import TopBar from "./TopBar";
 import SideNavbar from "./SideNavBar";
 import { useState } from "react";
 
 const DashboardComponent = () => {
   const [isTrue, setIsTrue] = useState(false);
+  const value = useParams();
+  console.log(value);
   return (
     <>
       <TopBar
