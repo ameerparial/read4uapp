@@ -12,7 +12,7 @@ const SideNavbar = () => {
             <NavLink
               to={"dashboard"}
               className={`nav-link ${
-                activeLink == "dashboard" ? "active-me" : ""
+                activeLink === "dashboard" ? "active-me" : ""
               }`}
               onClick={() => {
                 setActiveLink("dashboard");
@@ -26,7 +26,7 @@ const SideNavbar = () => {
             <NavLink
               to={"read4u"}
               className={`nav-link ${
-                activeLink == "read4u" ? "active-me" : ""
+                activeLink === "read4u" ? "active-me" : ""
               }`}
               onClick={() => {
                 setActiveLink("read4u");
@@ -39,7 +39,9 @@ const SideNavbar = () => {
           <li className="nav-item">
             <NavLink
               to={"voice-artists"}
-              className={`nav-link ${activeLink == "voice" ? "active-me" : ""}`}
+              className={`nav-link ${
+                activeLink === "voice" ? "active-me" : ""
+              }`}
               onClick={() => {
                 setActiveLink("voice");
               }}
@@ -51,7 +53,7 @@ const SideNavbar = () => {
           <li className="nav-item">
             <NavLink
               to={"read-by-u"}
-              className={`nav-link ${activeLink == "pdfs" ? "active-me" : ""}`}
+              className={`nav-link ${activeLink === "pdfs" ? "active-me" : ""}`}
               onClick={() => {
                 setActiveLink("pdfs");
               }}
@@ -63,7 +65,9 @@ const SideNavbar = () => {
           <li className="nav-item">
             <NavLink
               to={"word-list"}
-              className={`nav-link ${activeLink == "words" ? "active-me" : ""}`}
+              className={`nav-link ${
+                activeLink === "words" ? "active-me" : ""
+              }`}
               onClick={() => {
                 setActiveLink("words");
               }}
@@ -76,7 +80,7 @@ const SideNavbar = () => {
             <NavLink
               to={"profile-setting"}
               className={`nav-link ${
-                activeLink == "setting" ? "active-me" : ""
+                activeLink === "setting" ? "active-me" : ""
               }`}
               onClick={() => {
                 setActiveLink("setting");
@@ -90,7 +94,7 @@ const SideNavbar = () => {
             <NavLink
               to={"logout"}
               className={`nav-link ${
-                activeLink == "logout" ? "active-me" : ""
+                activeLink === "logout" ? "active-me" : ""
               }`}
               onClick={() => {
                 setActiveLink("logout");
