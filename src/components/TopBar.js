@@ -1,6 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
-import SideNavbar from "./SideNavBar";
 
 const TopBar = ({ profileImageUrl, setHamStatus }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
