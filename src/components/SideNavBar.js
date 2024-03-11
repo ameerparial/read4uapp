@@ -8,38 +8,44 @@ const SideNavbar = () => {
         <ul className="nav flex-column">
           <li className="nav-item">
             <NavLink to={"dashboard"} className="nav-link">
-              <i className="fas fa-home me-2"></i>
+              <i className="fas fa-tachometer-alt me-2"></i>
               Dashboard
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to={"orders"} className="nav-link">
-              <i className="fas fa-shopping-cart me-2"></i>
-              Orders
+            <NavLink to={"read4u"} className="nav-link">
+              <i className="fas fa-book-open me-2"></i>
+              Read
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to={"products"} className="nav-link">
-              <i className="fas fa-box me-2"></i>
-              Products
+            <NavLink to={"voice-artists"} className="nav-link">
+              <i className="fas fa-microphone me-2"></i>
+              Voice Artists
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to={"customers"} className="nav-link">
-              <i className="fas fa-users me-2"></i>
-              Customers
+            <NavLink to={"read-by-u"} className="nav-link">
+              <i className="fas fa-file-pdf me-2"></i>
+              PDFs
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to={"reports"} className="nav-link">
-              <i className="fas fa-chart-line me-2"></i>
-              Reports
+            <NavLink to={"word-list"} className="nav-link">
+              <i className="fas fa-highlighter me-2"></i>
+              Marked Words
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to={"integrations"} className="nav-link">
-              <i className="fas fa-plug me-2"></i>
-              Integrations
+            <NavLink to={"profile-setting"} className="nav-link">
+              <i className="fas fa-cog me-2"></i>
+              Setting
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink to={"logout"} className="nav-link">
+              <i className="fas fa-sign-out-alt me-2"></i>
+              Logout
             </NavLink>
           </li>
         </ul>
