@@ -2,11 +2,11 @@ import React from "react";
 
 const SideNavbar = () => {
   return (
-    <nav className="col-md-2  sidebar">
+    <nav className="sidebar">
       <div className="sidebar-sticky">
         <ul className="nav flex-column">
           <li className="nav-item">
-            <a className="nav-link active" href="#">
+            <a className="nav-link active" href="/dashboard">
               <i className="fas fa-home me-2"></i>
               Dashboard
             </a>

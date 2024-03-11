@@ -2,10 +2,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import SideNavbar from "./SideNavBar";
 
-const TopBar = ({ profileImageUrl }) => {
+const TopBar = ({ profileImageUrl, setHamStatus }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleMenuClick = () => {
+    setHamStatus(!isMenuOpen);
     setIsMenuOpen(!isMenuOpen);
   };
   return (
@@ -37,7 +38,6 @@ const TopBar = ({ profileImageUrl }) => {
           </a>
         </div>
       </div>
-      {isMenuOpen && <SideNavbar />}
     </>
   );
 };
