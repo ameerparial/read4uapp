@@ -37,7 +37,7 @@ const SideNavbar = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to={"intergrations"} className="nav-link">
+            <NavLink to={"integrations"} className="nav-link">
               <i className="fas fa-plug me-2"></i>
               Integrations
             </NavLink>
