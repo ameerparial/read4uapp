@@ -13,11 +13,14 @@ const VoiceArtistsComponent = () => {
     <>
       <div className="container">
         <div className="row">
-          <div className="col-lg-6 mycol-i">
+          <div className="col-md-6 col-lg-4 mycol-i">
             <div class="card">
               <div className="top-card-data d-flex align-items-center justify-content-between m-0">
                 <a>
-                  <img src="https://via.placeholder.com/50" alt="..." />
+                  <img
+                    src="https://source.unsplash.com/random/150x150"
+                    alt="..."
+                  />
                   <span style={{ color: "white" }}>username 1</span>
                 </a>
                 <i className="fas fa-microphone"></i>
@@ -30,11 +33,14 @@ const VoiceArtistsComponent = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 mycol-i">
+          <div className="col-md-6 col-lg-4 mycol-i">
             <div class="card">
               <div className="top-card-data d-flex align-items-center justify-content-between m-0">
                 <a>
-                  <img src="https://via.placeholder.com/50" alt="..." />
+                  <img
+                    src="https://source.unsplash.com/random/150x150"
+                    alt="..."
+                  />
                   <span style={{ color: "white" }}>username 2</span>
                 </a>
                 <i className="fas fa-microphone"></i>
@@ -47,11 +53,14 @@ const VoiceArtistsComponent = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 mycol-i">
+          <div className="col-md-6 col-lg-4 mycol-i">
             <div class="card">
               <div className="top-card-data d-flex align-items-center justify-content-between m-0">
                 <a>
-                  <img src="https://via.placeholder.com/50" alt="..." />
+                  <img
+                    src="https://source.unsplash.com/random/150x150"
+                    alt="..."
+                  />
                   <span style={{ color: "white" }}>username 3</span>
                 </a>
                 <i className="fas fa-microphone"></i>
@@ -64,11 +73,14 @@ const VoiceArtistsComponent = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 mycol-i">
+          <div className="col-md-6 col-lg-4 mycol-i">
             <div class="card">
               <div className="top-card-data d-flex align-items-center justify-content-between m-0">
                 <a>
-                  <img src="https://via.placeholder.com/50" alt="..." />
+                  <img
+                    src="https://source.unsplash.com/random/150x150"
+                    alt="..."
+                  />
                   <span style={{ color: "white" }}>username 4</span>
                 </a>
                 <i className="fas fa-microphone"></i>
