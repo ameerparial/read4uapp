@@ -11,7 +11,79 @@ const VoiceArtistsComponent = () => {
   };
   return (
     <>
-      <div
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-6 mycol-i">
+            <div class="card">
+              <div className="top-card-data d-flex align-items-center justify-content-between m-0">
+                <a>
+                  <img src="https://via.placeholder.com/50" alt="..." />
+                  <span style={{ color: "#df622c" }}>username 1</span>
+                </a>
+                <i className="fas fa-microphone"></i>
+              </div>
+              <div className="card-body">
+                <p className="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6 mycol-i">
+            <div class="card">
+              <div className="top-card-data d-flex align-items-center justify-content-between m-0">
+                <a>
+                  <img src="https://via.placeholder.com/50" alt="..." />
+                  <span style={{ color: "#df622c" }}>username 1</span>
+                </a>
+                <i className="fas fa-microphone"></i>
+              </div>
+              <div className="card-body">
+                <p className="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6 mycol-i">
+            <div class="card">
+              <div className="top-card-data d-flex align-items-center justify-content-between m-0">
+                <a>
+                  <img src="https://via.placeholder.com/50" alt="..." />
+                  <span style={{ color: "#df622c" }}>username 1</span>
+                </a>
+                <i className="fas fa-microphone"></i>
+              </div>
+              <div className="card-body">
+                <p className="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6 mycol-i">
+            <div class="card">
+              <div className="top-card-data d-flex align-items-center justify-content-between m-0">
+                <a>
+                  <img src="https://via.placeholder.com/50" alt="..." />
+                  <span style={{ color: "#df622c" }}>username 1</span>
+                </a>
+                <i className="fas fa-microphone"></i>
+              </div>
+              <div className="card-body">
+                <p className="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* <div
         id="carouselExampleControls"
         className="carousel slide"
         data-bs-ride="carousel"
@@ -92,7 +164,7 @@ const VoiceArtistsComponent = () => {
           ></span>
           <span className="visually-hidden">Next</span>
         </button>
-      </div>
+      </div> */}
     </>
   );
 };
