@@ -162,15 +162,20 @@ input:focus {
   margin-top: 40px;
 }
 
-.carousel-inner .top-card-data {
+.top-card-data {
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 10px;
-  border-bottom: 1px solid #df622c;
+  border-radius: 12px 12px 0px 0px;
+  border-bottom: 2px solid #df622c;
+  border-radius: 12px 12px 0px 0px;
+  background-color: #022249;
+  opacity: 80%;
 }
 
 .top-card-data img {
   border-radius: 100%;
+  border: 1px solid white;
   width: 40px;
   height: 40px;
   margin-right: 5px;
@@ -179,7 +184,7 @@ input:focus {
 
 .top-card-data i {
   font-size: 1.5rem;
-  color: #df622c;
+  color: white;
   cursor: pointer;
 }
 .card {
