@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import DashboardDataComponent from "./Navbar-data-components/Dashboard-data";
+import VoiceArtistsComponent from "./Navbar-data-components/Voice-artists-data";
 
 const Container = () => {
   const { route } = useParams();
@@ -10,7 +11,7 @@ const Container = () => {
     case "read4u":
       return <h1>Input here to read the pdf.</h1>;
     case "voice-artists":
-      return <h1>Artists</h1>;
+      return <VoiceArtistsComponent />;
     case "read-by-u":
       return <h1>PDFs ready by you.</h1>;
     case "word-list":
