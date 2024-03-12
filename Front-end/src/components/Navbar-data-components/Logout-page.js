@@ -65,7 +65,7 @@ const LogoutComponent = () => {
 
   return (
     <div className="container mt-5">
-      <h1>Welcome to My App</h1>
+      <h1>Click here to logout!</h1>
       <button
         type="button"
         className="btn btn-primary"
@@ -82,4 +82,4 @@ const LogoutComponent = () => {
   );
 };
 
-export default LogoutPrompt;
+export default LogoutComponent;

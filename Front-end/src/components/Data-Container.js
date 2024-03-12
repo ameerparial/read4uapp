@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import DashboardDataComponent from "./Navbar-data-components/Dashboard-data";
 import VoiceArtistsComponent from "./Navbar-data-components/Voice-artists-data";
+import LogoutComponent from "./Navbar-data-components/Logout-page";
 
 const Container = () => {
   const { route } = useParams();
@@ -19,7 +20,7 @@ const Container = () => {
     case "profile-setting":
       return <h1>Account Setting</h1>;
     case "logout":
-      return <h1>Logout</h1>;
+      return <LogoutComponent />;
     default:
       return <h1>Page not found!</h1>;
   }
