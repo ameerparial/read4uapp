@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
-import DashboardComponent from "./Dashboard";
+import DashboardDataComponent from "./Navbar-data-components/Dashboard-data";
 
 const Container = () => {
   const { route } = useParams();
 
   switch (route) {
     case "dashboard":
-      return <h1>Dashboard</h1>;
+      return <DashboardDataComponent />;
     case "read4u":
       return <h1>Input here to read the pdf.</h1>;
     case "voice-artists":
