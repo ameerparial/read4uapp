@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import DashboardDataComponent from "./Navbar-data-components/Dashboard-data";
 import VoiceArtistsComponent from "./Navbar-data-components/Voice-artists-data";
 import LogoutComponent from "./Navbar-data-components/Logout-page";
+import ReadByComponent from "./Navbar-data-components/ReadBy-page";
 
 const Container = () => {
   const { route } = useParams();
@@ -14,7 +15,7 @@ const Container = () => {
     case "voice-artists":
       return <VoiceArtistsComponent />;
     case "read-by-u":
-      return <h1>PDFs ready by you.</h1>;
+      return <ReadByComponent />;
     case "word-list":
       return <h1>Difficult word list</h1>;
     case "profile-setting":
