@@ -23,7 +23,11 @@ const LoginComponent = () => {
 
       <div className="login-frame">
         <h1>Sign In</h1>
-        <form onSubmit={checkCredentials} method="post">
+        <form
+          onSubmit={checkCredentials}
+          method="post"
+          action="http://localhost:5500/login-me"
+        >
           <div className="separator">
             <label className="labelField">Email:</label>
             <input
