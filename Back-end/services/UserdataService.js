@@ -16,6 +16,16 @@ class UserDataService {
     return null;
   }
 
+  async addData(newUser) {
+    const data = await this.getData();
+    console.log(data);
+    const newData = { ...data, newUser };
+    if (fs.writeFileSync(this.path, JSON.stringify(newData))) {
+      return true;
+    }
+    return false;
+  }
+
   async getData() {
     const users = await fs.readFileSync(this.path);
     return JSON.parse(users);
