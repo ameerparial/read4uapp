@@ -7,25 +7,36 @@ const RegisterComponent = () => {
 
       <div className="login-frame">
         <h1>Register</h1>
-        <form>
+        <form method="post" action="http://localhost:5500/login-me/register">
           <div className="separator">
             <label className="labelField">Email:</label>
             <input
               type="email"
               className="inputField"
               placeholder="awais-std@gmail.com"
+              name="email"
               required
             />
           </div>
 
           <div className="separator">
             <label className="labelField">Username:</label>
-            <input type="text" className="inputField" required />
+            <input
+              type="text"
+              className="inputField"
+              name="username"
+              required
+            />
           </div>
 
           <div className="separator">
             <label className="labelField">Password:</label>
-            <input type="password" className="inputField" required />
+            <input
+              type="password"
+              name="password"
+              className="inputField"
+              required
+            />
           </div>
 
           <div className="separator">

@@ -3,8 +3,10 @@
     "username": "khuhroameerhamza",
     "password": "sukkuriba123"
   },
-  "ameerparial@gmail.com": {
-    "username": "ameerparial",
-    "password": "khan123"
+  "ameerparial@gmail.com": { "username": "ameerparial", "password": "khan123" },
+  "newUser": {
+    "newData": {
+      "ameer@gmail.com": { "username": "khuhroamer", "password": "sukkur123" }
+    }
   }
 }
