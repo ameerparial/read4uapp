@@ -19,12 +19,12 @@ const RegisterComponent = () => {
           </div>
 
           <div className="separator">
-            <label className="labelField">Password:</label>
-            <input type="password" className="inputField" required />
+            <label className="labelField">Username:</label>
+            <input type="text" className="inputField" required />
           </div>
 
           <div className="separator">
-            <label className="labelField">Repeat Password:</label>
+            <label className="labelField">Password:</label>
             <input type="password" className="inputField" required />
           </div>
 
