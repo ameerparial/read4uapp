@@ -17,6 +17,23 @@ const LoginRouter = (UserServices) => {
     }
     return res.redirect("http://localhost:3000/login");
   });
+
+  Router.post("/register", (req, res) => {
+    const key = req.body.email;
+    const newData = {
+      [key]: {
+        username: req.body.username,
+        password: req.body.password,
+      },
+    };
+
+    if (UserServices.addData(newData)) {
+      return res.redirect("http://localhost:3000/login");
+    }
+    return redirect("http://localhost:3000/register");
+
+    res.send(req.body);
+  });
   return Router;
 };
 
