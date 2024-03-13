@@ -8,6 +8,11 @@ const LoginRouter = (UserServices) => {
     console.log(data);
     res.send(data);
   });
+
+  Router.post("/", async (req, res) => {
+    const current_user = req.body;
+    res.json(current_user);
+  });
   return Router;
 };
 
