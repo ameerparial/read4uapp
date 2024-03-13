@@ -11,7 +11,11 @@ const LoginRouter = (UserServices) => {
 
   Router.post("/", async (req, res) => {
     const current_user = req.body;
-    res.json(current_user);
+    const userStatus = await UserServices.isUser(current_user);
+    if (userStatus) {
+      return res.redirect("http://localhost:3000/dashboard");
+    }
+    return res.redirect("http://localhost:3000/login");
   });
   return Router;
 };
