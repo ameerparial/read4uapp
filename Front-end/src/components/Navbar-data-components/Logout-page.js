@@ -7,11 +7,7 @@ const LogoutComponent = () => {
   return (
     <div className="container">
       <h1>Are you sure you want to logout?</h1>
-      <button
-        type="button"
-        className="mt-2 btn btn-primary"
-        onClick={handleLogout}
-      >
+      <button type="button" className="mt-2 btn" onClick={handleLogout}>
         Logout
       </button>
     </div>
