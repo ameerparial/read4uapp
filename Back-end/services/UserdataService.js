@@ -4,23 +4,31 @@ class UserDataService {
     this.path = path;
   }
 
-  async isUser(user) {
-    const data = await this.getData();
+  async isUser(loginUser) {
+    const { users } = await this.getData();
     // console.log(user.useremail);
-    if (
-      data[user.useremail] &&
-      data[user.useremail]?.password === user.userpassword
-    ) {
-      return data;
+
+    console.log(users);
+    const value = users.find((user) => {
+      if (
+        user.email === loginUser.useremail &&
+        user.password === loginUser.userpassword
+      ) {
+        return true;
+      }
+    });
+    console.log(value);
+    if (value) {
+      return true;
     }
-    return null;
+    return false;
   }
 
   async addData(newUser) {
-    const data = await this.getData();
-    console.log(data);
-    const newData = { ...data, newUser };
-    if (fs.writeFileSync(this.path, JSON.stringify(newData))) {
+    const { users } = await this.getData();
+    users.push(newUser);
+    console.log(users);
+    if (fs.writeFileSync(this.path, JSON.stringify({ users }))) {
       return true;
     }
     return false;
