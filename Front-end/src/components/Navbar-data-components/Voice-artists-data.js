@@ -14,7 +14,7 @@ const VoiceArtistsComponent = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-6 col-lg-4 mycol-i">
-            <div class="card center-card">
+            <div className="card center-card">
               <div className="top-card-data d-flex align-items-center justify-content-between m-0">
                 <a>
                   <img
@@ -34,7 +34,7 @@ const VoiceArtistsComponent = () => {
             </div>
           </div>
           <div className="col-md-6 col-lg-4 mycol-i">
-            <div class="card center-card">
+            <div className="card center-card">
               <div className="top-card-data d-flex align-items-center justify-content-between m-0">
                 <a>
                   <img
@@ -54,7 +54,7 @@ const VoiceArtistsComponent = () => {
             </div>
           </div>
           <div className="col-md-6 col-lg-4 mycol-i">
-            <div class="card center-card">
+            <div className="card center-card">
               <div className="top-card-data d-flex align-items-center justify-content-between m-0">
                 <a>
                   <img
@@ -74,7 +74,7 @@ const VoiceArtistsComponent = () => {
             </div>
           </div>
           <div className="col-md-6 col-lg-4 mycol-i">
-            <div class="card center-card">
+            <div className="card center-card">
               <div className="top-card-data d-flex align-items-center justify-content-between m-0">
                 <a>
                   <img
