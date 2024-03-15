@@ -1,10 +1,12 @@
 import { useState } from "react";
+import ErrorComponent from "./ErrorPage";
 
 const LoginComponent = () => {
   const [loginInfo, setLoginInfo] = useState({
     useremail: "",
     userpassword: "",
   });
+  const [errors, setErrors] = useState([]);
 
   const setData = (event) => {
     const name = event?.target.name;
@@ -12,8 +14,14 @@ const LoginComponent = () => {
     setLoginInfo({ ...loginInfo, [name]: value });
   };
 
-  const checkCredentials = () => {
-    console.log(loginInfo);
+  const checkCredentials = (e) => {
+    e.preventDefault();
+    //Checking the coming data
+    const errors = [];
+    if (loginInfo.userpassword.length < 8) {
+      errors.push("Password must contain at least 8 digits.");
+    }
+    setErrors(errors);
   };
   return (
     <>
@@ -23,11 +31,7 @@ const LoginComponent = () => {
 
       <div className="login-frame">
         <h1>Sign In</h1>
-        <form
-          onSubmit={checkCredentials}
-          method="post"
-          action="http://localhost:5500/login-me"
-        >
+        <form onSubmit={checkCredentials}>
           <div className="separator">
             <label className="labelField">Email:</label>
             <input
@@ -54,6 +58,9 @@ const LoginComponent = () => {
 
           <div className="forget-message">
             <a href="/">Forgot Password?</a>
+          </div>
+          <div className="separator">
+            {errors && <ErrorComponent errors={errors} />}
           </div>
 
           <div className="separator">
