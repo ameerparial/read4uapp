@@ -6,8 +6,8 @@ import { useState } from "react";
 
 const DashboardComponent = () => {
   const [isTrue, setIsTrue] = useState(false);
-  const value = useParams();
-  console.log(value);
+  const { route } = useParams();
+  console.log(`route is: ${route}`);
   return (
     <>
       <TopBar
@@ -18,7 +18,7 @@ const DashboardComponent = () => {
       <div className="container-fluid h-100">
         <div className="row">
           <div className={`${isTrue ? "col-md-3 col-lg-2" : ""}`}>
-            {isTrue && <SideNavbar />}
+            {isTrue && <SideNavbar route={route} />}
           </div>
           <div
             className={`${isTrue ? "col-md-9 col-lg-10 dash-con" : "dash-con"}`}

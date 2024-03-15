@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-const SideNavbar = () => {
-  const [activeLink, setActiveLink] = useState(null);
+const SideNavbar = ({ route }) => {
+  const [activeLink, setActiveLink] = useState(route);
 
   return (
     <nav className="sidebar">
@@ -40,10 +40,10 @@ const SideNavbar = () => {
             <NavLink
               to={"voice-artists"}
               className={`nav-link ${
-                activeLink === "voice" ? "active-me" : ""
+                activeLink === "voice-artists" ? "active-me" : ""
               }`}
               onClick={() => {
-                setActiveLink("voice");
+                setActiveLink("voice-artists");
               }}
             >
               <i className="fas fa-microphone me-2"></i>
@@ -53,9 +53,11 @@ const SideNavbar = () => {
           <li className="nav-item">
             <NavLink
               to={"read-by-u"}
-              className={`nav-link ${activeLink === "pdfs" ? "active-me" : ""}`}
+              className={`nav-link ${
+                activeLink === "read-by-u" ? "active-me" : ""
+              }`}
               onClick={() => {
-                setActiveLink("pdfs");
+                setActiveLink("read-by-u");
               }}
             >
               <i className="fas fa-file-pdf me-2"></i>
@@ -66,10 +68,10 @@ const SideNavbar = () => {
             <NavLink
               to={"word-list"}
               className={`nav-link ${
-                activeLink === "words" ? "active-me" : ""
+                activeLink === "word-list" ? "active-me" : ""
               }`}
               onClick={() => {
-                setActiveLink("words");
+                setActiveLink("word-list");
               }}
             >
               <i className="fas fa-highlighter me-2"></i>
@@ -80,10 +82,10 @@ const SideNavbar = () => {
             <NavLink
               to={"profile-setting"}
               className={`nav-link ${
-                activeLink === "setting" ? "active-me" : ""
+                activeLink === "profile-setting" ? "active-me" : ""
               }`}
               onClick={() => {
-                setActiveLink("setting");
+                setActiveLink("profile-setting");
               }}
             >
               <i className="fas fa-cog me-2"></i>
