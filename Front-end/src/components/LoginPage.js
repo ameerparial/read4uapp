@@ -44,11 +44,7 @@ const LoginComponent = () => {
 
       <div className="login-frame">
         <h1>Sign In</h1>
-        <form
-          onSubmit={checkCredentials}
-          action="http://localhost:5500/login-me"
-          method="post"
-        >
+        <form action="http://localhost:5500/login-me" method="post">
           <div className="separator">
             <label className="labelField">Email:</label>
             <input
