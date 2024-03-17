@@ -21,6 +21,19 @@ const LoginComponent = () => {
     if (loginInfo.userpassword.length < 8) {
       errors.push("Password must contain at least 8 digits.");
     }
+    // if (errors.length === 0) {
+    //   const requestOptions = {
+    //     method: "GET",
+    //     headers: { "Content-Type": "" },
+    //     body: JSON.stringify(loginInfo),
+    //   };
+
+    //   fetch("http://localhost:5500/login-me")
+    //     .then((response) => {
+    //       response.json();
+    //     })
+    //     .catch();
+    // }
     setErrors(errors);
   };
   return (
