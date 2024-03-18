@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ErrorComponent from "./ErrorPage";
+import { useNavigate } from "react-router-dom";
 
 const LoginComponent = () => {
   const [loginInfo, setLoginInfo] = useState({
@@ -7,6 +8,7 @@ const LoginComponent = () => {
     userpassword: "",
   });
   const [errors, setErrors] = useState([]);
+  const navigate = useNavigate();
 
   const setData = (event) => {
     const name = event?.target.name;
@@ -21,19 +23,26 @@ const LoginComponent = () => {
     if (loginInfo.userpassword.length < 8) {
       errors.push("Password must contain at least 8 digits.");
     }
-    // if (errors.length === 0) {
-    //   const requestOptions = {
-    //     method: "GET",
-    //     headers: { "Content-Type": "" },
-    //     body: JSON.stringify(loginInfo),
-    //   };
+    if (errors.length === 0) {
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(loginInfo),
+      };
 
-    //   fetch("http://localhost:5500/login-me")
-    //     .then((response) => {
-    //       response.json();
-    //     })
-    //     .catch();
-    // }
+      fetch("http://localhost:5500/login-me", requestOptions)
+        .then((response) => response.json())
+        .then((message) => {
+          if (message) {
+            navigate("/dashboard");
+          } else {
+            setErrors(["Account does not exist."]);
+          }
+        })
+        .catch((err) => {
+          setErrors(err);
+        });
+    }
     setErrors(errors);
   };
   return (
@@ -44,7 +53,7 @@ const LoginComponent = () => {
 
       <div className="login-frame">
         <h1>Sign In</h1>
-        <form action="http://localhost:5500/login-me" method="post">
+        <form onSubmit={checkCredentials}>
           <div className="separator">
             <label className="labelField">Email:</label>
             <input
