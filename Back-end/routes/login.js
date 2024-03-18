@@ -12,10 +12,9 @@ const LoginRouter = (UserServices) => {
   Router.post("/", async (req, res) => {
     const current_user = req.body;
     const userStatus = await UserServices.isUser(current_user);
-    if (userStatus) {
-      return res.redirect("http://localhost:3000/dashboard");
-    }
-    return res.redirect("http://localhost:3000/login");
+    // receive true/false from server
+    console.log(userStatus);
+    res.send(userStatus);
   });
 
   Router.post("/register", (req, res) => {
