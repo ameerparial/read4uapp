@@ -1,7 +1,11 @@
+import { useNavigate } from "react-router-dom";
+
 const LogoutComponent = () => {
+  const navigate = useNavigate();
   const handleLogout = () => {
     // Perform logout actions
     console.log("Logging out...");
+    navigate("/");
   };
 
   return (
