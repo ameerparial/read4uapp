@@ -17,11 +17,9 @@ const LoginRouter = (UserServices) => {
     res.send(userStatus);
   });
 
-  Router.post("/register", (req, res) => {
-    if (UserServices.addData(req.body)) {
-      return res.redirect("http://localhost:3000/login");
-    }
-    return redirect("http://localhost:3000/register");
+  Router.post("/register", async (req, res) => {
+    const message = await UserServices.addData(req.body);
+    res.json(message);
   });
   return Router;
 };
