@@ -1,4 +1,22 @@
+import { useState } from "react";
+
 const RegisterComponent = () => {
+  const [registerData, setRegisterData] = useState({
+    email: "",
+    username: "",
+    password: "",
+  });
+
+  const getData = (event) => {
+    const key = event.target.name;
+    const value = event.target.value;
+    setRegisterData((obj) => ({ ...obj, [key]: value }));
+  };
+
+  const registerUser = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <>
       <div className="header">
@@ -7,7 +25,7 @@ const RegisterComponent = () => {
 
       <div className="login-frame">
         <h1>Register</h1>
-        <form method="post" action="http://localhost:5500/login-me/register">
+        <form onSubmit={registerUser}>
           <div className="separator">
             <label className="labelField">Email:</label>
             <input
@@ -15,6 +33,8 @@ const RegisterComponent = () => {
               className="inputField"
               placeholder="awais-std@gmail.com"
               name="email"
+              value={registerData?.email}
+              onChange={getData}
               required
             />
           </div>
@@ -25,6 +45,8 @@ const RegisterComponent = () => {
               type="text"
               className="inputField"
               name="username"
+              value={registerData?.username}
+              onChange={getData}
               required
             />
           </div>
@@ -34,6 +56,8 @@ const RegisterComponent = () => {
             <input
               type="password"
               name="password"
+              value={registerData?.password}
+              onChange={getData}
               className="inputField"
               required
             />
