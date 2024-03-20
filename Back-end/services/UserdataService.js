@@ -5,8 +5,12 @@ class UserDataService {
   }
 
   async isUser(loginUser) {
-    const { users } = await this.getData();
-    // console.log(user.useremail);
+    const users = await this.getData();
+    console.log("iUser");
+    console.log(users);
+    if (!users) {
+      return false;
+    }
 
     console.log(users);
     const value = users.find((user) => {
@@ -38,15 +42,19 @@ class UserDataService {
   }
 
   async addData(newUser) {
-    const { users } = await this.getData();
+    const users = await this.getData();
     if (!users) {
-      return { status: false, msg: "Account does not Exist" };
+      //No User exist.
+      //You are first user to use this application.
+      const users = [newUser];
+      fs.writeFileSync(this.path, JSON.stringify(users));
+      return { status: true, msg: "Account Created Successfully." };
     }
     if (this.isAlreadyExist(users, newUser)) {
       return { status: false, msg: "Account Already exists!" };
     }
     users.push(newUser);
-    fs.writeFileSync(this.path, JSON.stringify({ users }));
+    fs.writeFileSync(this.path, JSON.stringify(users));
     return { status: true, msg: "Account Created Successfully." };
   }
 
@@ -57,14 +65,16 @@ class UserDataService {
     }
     //2- Read the file and parse the JSON data
     const users = fs.readFileSync(this.path, "utf8");
-    console.log(users);
     // Check if the file is empty
     if (!users.trim()) {
-      console.log("TRIM CALLED");
+      console.log("TRIM");
       return [];
     }
+    const data = JSON.parse(users);
+    console.log("Read Data");
+    console.log(data);
 
-    return JSON.parse(users);
+    return data;
   }
 }
 
