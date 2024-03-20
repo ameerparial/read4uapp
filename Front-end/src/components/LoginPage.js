@@ -1,8 +1,10 @@
 import { useState } from "react";
 import ErrorComponent from "./ErrorPage";
 import { useNavigate } from "react-router-dom";
+import LoadingComponent from "./LoadingPage";
 
 const LoginComponent = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [loginInfo, setLoginInfo] = useState({
     useremail: "",
     userpassword: "",
@@ -18,6 +20,7 @@ const LoginComponent = () => {
 
   const checkCredentials = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     //Checking the coming data
     const errors = [];
     if (loginInfo.userpassword.length < 8) {
@@ -38,15 +41,18 @@ const LoginComponent = () => {
           } else {
             setErrors(["Account does not exist."]);
           }
+          setIsLoading(false);
         })
         .catch((err) => {
           setErrors(err);
+          setIsLoading(false);
         });
     }
     setErrors(errors);
   };
   return (
     <>
+      <LoadingComponent isLoading={isLoading} />
       <div className="header">
         <h1 id="header-title">Welcome to R4U APP</h1>
       </div>
