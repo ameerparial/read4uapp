@@ -39,6 +39,9 @@ class UserDataService {
 
   async addData(newUser) {
     const { users } = await this.getData();
+    if (!users) {
+      return { status: false, msg: "Account does not Exist" };
+    }
     if (this.isAlreadyExist(users, newUser)) {
       return { status: false, msg: "Account Already exists!" };
     }
@@ -48,7 +51,19 @@ class UserDataService {
   }
 
   async getData() {
-    const users = await fs.readFileSync(this.path);
+    //1- Checking does file exist.
+    if (!fs.existsSync(this.path)) {
+      return [];
+    }
+    //2- Read the file and parse the JSON data
+    const users = fs.readFileSync(this.path, "utf8");
+    console.log(users);
+    // Check if the file is empty
+    if (!users.trim()) {
+      console.log("TRIM CALLED");
+      return [];
+    }
+
     return JSON.parse(users);
   }
 }
