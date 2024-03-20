@@ -22,33 +22,33 @@ const LoginComponent = () => {
     e.preventDefault();
     setIsLoading(true);
     //Checking the coming data
-    const errors = [];
-    if (loginInfo.userpassword.length < 8) {
-      errors.push("Password must contain at least 8 digits.");
-    }
-    if (errors.length === 0) {
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(loginInfo),
-      };
 
-      fetch("http://localhost:5500/login-me", requestOptions)
-        .then((response) => response.json())
-        .then((message) => {
-          if (message) {
-            navigate("/dashboard");
-          } else {
-            setErrors(["Account does not exist."]);
-          }
-          setIsLoading(false);
-        })
-        .catch((err) => {
-          setErrors(err);
-          setIsLoading(false);
-        });
+    if (loginInfo.userpassword.length < 8) {
+      setErrors(["Password must contain at least 8 digits."]);
+      setIsLoading(false);
+      return;
     }
-    setErrors(errors);
+
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(loginInfo),
+    };
+
+    fetch("http://localhost:5500/login-me", requestOptions)
+      .then((response) => response.json())
+      .then((message) => {
+        if (message) {
+          navigate("/dashboard");
+        } else {
+          setErrors(["Account does not exist."]);
+        }
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setErrors(err);
+        setIsLoading(false);
+      });
   };
   return (
     <>
