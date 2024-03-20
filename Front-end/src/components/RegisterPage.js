@@ -1,11 +1,15 @@
 import { useState } from "react";
+import ErrorComponent from "./ErrorPage";
+import { useNavigate } from "react-router-dom";
 
 const RegisterComponent = () => {
+  const navigate = useNavigate();
   const [registerData, setRegisterData] = useState({
     email: "",
     username: "",
     password: "",
   });
+  const [errors, setErrors] = useState([]);
 
   const getData = (event) => {
     const key = event.target.name;
@@ -15,6 +19,31 @@ const RegisterComponent = () => {
 
   const registerUser = (event) => {
     event.preventDefault();
+    console.log(registerData);
+    if (registerData?.password.length < 8) {
+      setErrors(["Password must contain at least 8 letters."]);
+      return;
+    }
+    fetch("http://localhost:5500/login-me/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(registerData),
+    })
+      .then((res) => res.json())
+      .then((statusObject) => {
+        if (statusObject.status) {
+          navigate("/login");
+          return;
+        }
+        setErrors([statusObject.msg]);
+      })
+      .catch((err) => setErrors(err));
+
+    //Handling Errors
+    // 1-Email and Username must be unique
+    // 2- Password must be greater than 8 letters.
   };
 
   return (
@@ -61,6 +90,9 @@ const RegisterComponent = () => {
               className="inputField"
               required
             />
+          </div>
+          <div className="separator">
+            {errors && <ErrorComponent errors={errors} />}
           </div>
 
           <div className="separator">
