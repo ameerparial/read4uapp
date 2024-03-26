@@ -40,7 +40,9 @@ const LoginComponent = () => {
       .then((response) => response.json())
       .then((data) => {
         //Data exis
+        console.log("Login Component Data received from Server.");
         console.log(data);
+        navigate("/dashboard");
 
         setIsLoading(false);
       })
