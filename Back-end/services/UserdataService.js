@@ -6,13 +6,8 @@ class UserDataService {
 
   async isUser(loginUser) {
     const users = await this.getData();
-    console.log("iUser");
-    console.log(users);
-    if (!users) {
-      return false;
-    }
+    console.log("Checking for user...");
 
-    console.log(users);
     const value = users.find((user) => {
       if (
         user.email === loginUser.useremail &&
@@ -21,11 +16,8 @@ class UserDataService {
         return true;
       }
     });
-    console.log(value);
-    if (value) {
-      return true;
-    }
-    return false;
+    // console.log(value);
+    return value;
   }
 
   isAlreadyExist(users, newUser) {
