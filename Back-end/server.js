@@ -4,16 +4,15 @@ import UserDataService from "./services/UserdataService";
 import cors from "cors";
 import bodyParser from "body-parser";
 import session from "express-session";
-import cookieParser from "cookie-parser";
+
 const UserServices = new UserDataService("./data/RegisterAccounts.json");
 const app = express();
 
-app.use(cookieParser());
 app.use(
   session({
-    secret: "ameerhamza",
-    cookie: { maxAge: 3000 },
-    saveUninitialized: false,
+    secret: "ameerhamzakhuhro",
+    saveUninitialized: true,
+    resave: false,
   })
 );
 app.use(cors());
