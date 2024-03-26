@@ -11,10 +11,11 @@ const LoginRouter = (UserServices) => {
 
   Router.post("/", async (req, res) => {
     const current_user = req.body;
-    const userStatus = await UserServices.isUser(current_user);
+    const userObj = await UserServices.isUser(current_user);
     // receive true/false from server
-    console.log(userStatus);
-    res.send(userStatus);
+    // req.session.user = userObj;
+    console.log(userObj);
+    res.json(userObj);
   });
 
   Router.post("/register", async (req, res) => {

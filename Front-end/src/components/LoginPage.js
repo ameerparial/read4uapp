@@ -22,6 +22,7 @@ const LoginComponent = () => {
     e.preventDefault();
     setIsLoading(true);
     //Checking the coming data
+    console.log("On login n event");
 
     if (loginInfo.userpassword.length < 8) {
       setErrors(["Password must contain at least 8 digits."]);
@@ -37,16 +38,15 @@ const LoginComponent = () => {
 
     fetch("http://localhost:5500/login-me", requestOptions)
       .then((response) => response.json())
-      .then((message) => {
-        if (message) {
-          navigate("/dashboard");
-        } else {
-          setErrors(["Account does not exist."]);
-        }
+      .then((data) => {
+        //Data exis
+        console.log(data);
+
         setIsLoading(false);
       })
       .catch((err) => {
-        setErrors(err);
+        console.log(err);
+        setErrors(["Account does not Exists."]);
         setIsLoading(false);
       });
   };
