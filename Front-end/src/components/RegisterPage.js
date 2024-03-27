@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ErrorComponent from "./ErrorPage";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const RegisterComponent = () => {
   const navigate = useNavigate();
@@ -17,29 +18,25 @@ const RegisterComponent = () => {
     setRegisterData((obj) => ({ ...obj, [key]: value }));
   };
 
-  const registerUser = (event) => {
+  const registerUser = async (event) => {
     event.preventDefault();
     console.log(registerData);
     if (registerData?.password.length < 8) {
       setErrors(["Password must contain at least 8 letters."]);
       return;
     }
-    fetch("http://localhost:5500/login-me/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(registerData),
-    })
-      .then((res) => res.json())
-      .then((statusObject) => {
-        if (statusObject.status) {
-          navigate("/login");
-          return;
-        }
-        setErrors([statusObject.msg]);
-      })
-      .catch((err) => setErrors(err));
+
+    const response = await axios.post(
+      "http://localhost:5500/login-me/register",
+      registerData
+    );
+
+    console.log(response.data);
+    if (response.data.status) {
+      navigate("/login");
+      return;
+    }
+    setErrors([response?.data?.msg]);
 
     //Handling Errors
     // 1-Email and Username must be unique

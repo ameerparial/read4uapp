@@ -2,6 +2,7 @@ import { useState } from "react";
 import ErrorComponent from "./ErrorPage";
 import { useNavigate } from "react-router-dom";
 import LoadingComponent from "./LoadingPage";
+import axios from "axios";
 
 const LoginComponent = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -18,11 +19,11 @@ const LoginComponent = () => {
     setLoginInfo({ ...loginInfo, [name]: value });
   };
 
-  const checkCredentials = (e) => {
+  const checkCredentials = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     //Checking the coming data
-    console.log("On login n event");
+    console.log("Login Event");
 
     if (loginInfo.userpassword.length < 8) {
       setErrors(["Password must contain at least 8 digits."]);
@@ -30,27 +31,17 @@ const LoginComponent = () => {
       return;
     }
 
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(loginInfo),
-    };
-
-    fetch("http://localhost:5500/login-me", requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        //Data exis
-        console.log("Login Component Data received from Server.");
-        console.log(data);
-        navigate("/dashboard");
-
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setErrors(["Account does not Exists."]);
-        setIsLoading(false);
-      });
+    const response = await axios.post(
+      "http://localhost:5500/login-me",
+      loginInfo
+    );
+    if (response.data) {
+      navigate("/dashboard");
+      setIsLoading(false);
+    } else {
+      setErrors(["Authentication Failed"]);
+      setIsLoading(false);
+    }
   };
   return (
     <>
