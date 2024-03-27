@@ -23,6 +23,7 @@ app.use(
     secret: "ameerhamzakhuhro",
     saveUninitialized: true,
     resave: false,
+    cookie: { maxAge: new Date().getTime() + 1000 * 36000 },
   })
 );
 app.use("/login-me", LoginRouter(UserServices));
