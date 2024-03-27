@@ -1,11 +1,22 @@
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 const LogoutComponent = () => {
   const navigate = useNavigate();
-  const handleLogout = () => {
+  const handleLogout = async () => {
     // Perform logout actions
-    console.log("Logging out...");
-    navigate("/");
+
+    try {
+      console.log("Logging out...");
+      const response = await axios.get("http://localhost:5500/logout");
+      console.log(response);
+      if (response.data.logout) {
+        navigate("/");
+      } else {
+        console.log("Error occured");
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
