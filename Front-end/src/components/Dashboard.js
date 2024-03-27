@@ -1,17 +1,41 @@
 import { Outlet } from "react-router";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import TopBar from "./TopBar";
 import SideNavbar from "./SideNavBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const DashboardComponent = () => {
+  const [username, setUsername] = useState("username");
   const [isTrue, setIsTrue] = useState(false);
+  const navigate = useNavigate();
   const { route } = useParams();
   console.log(`route is: ${route}`);
+
+  useEffect(() => {
+    try {
+      async function getUser() {
+        axios.defaults.withCredentials = true;
+        const response = await axios.get("http://localhost:5500/dashboard");
+        console.log("Data....");
+        console.log(response.data);
+        if (response.data) {
+          console.log(response.data);
+          setUsername(response.data?.username);
+        } else {
+          navigate("/login");
+        }
+      }
+      getUser();
+    } catch (err) {
+      console.log(err);
+      // navigate("/login");
+    }
+  }, []);
   return (
     <>
       <TopBar
-        username="John Doe"
+        username={username}
         profileImageUrl="https://source.unsplash.com/random/150x150"
         setHamStatus={setIsTrue}
       />
