@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ErrorComponent from "./ErrorPage";
 import { useNavigate } from "react-router-dom";
 import LoadingComponent from "./LoadingPage";
@@ -12,6 +12,24 @@ const LoginComponent = () => {
   });
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    try {
+      async function getData() {
+        axios.defaults.withCredentials = true;
+        const response = await axios.get("http://localhost:5500/dashboard");
+        console.log(response.data);
+        if (response.data) {
+          navigate("/dashboard");
+        } else {
+          console.log("Session is not saved");
+        }
+      }
+      getData();
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
 
   const setData = (event) => {
     const name = event?.target.name;
