@@ -92,7 +92,7 @@ const RegisterComponent = () => {
             {errors && <ErrorComponent errors={errors} />}
           </div>
 
-          <div className="separator">
+          <div className="separator" style={{ padding: "0px" }}>
             <div className="d-flex">
               <input
                 type="submit"
