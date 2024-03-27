@@ -5,6 +5,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import session from "express-session";
 import DashboardRouter from "./routes/DashboardRoute";
+import LogoutRouter from "./routes/logoutRouter";
 
 const UserServices = new UserDataService("./data/RegisterAccounts.json");
 const app = express();
@@ -28,6 +29,7 @@ app.use(
 );
 app.use("/login-me", LoginRouter(UserServices));
 app.use("/dashboard", DashboardRouter());
+app.use("/logout", LogoutRouter());
 
 app.listen(5500, () => {
   console.log("Listening at the port 5500...");
