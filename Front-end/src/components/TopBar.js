@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 
-const TopBar = ({ profileImageUrl, setHamStatus }) => {
+const TopBar = ({ username, profileImageUrl, setHamStatus }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleMenuClick = () => {
@@ -22,7 +22,7 @@ const TopBar = ({ profileImageUrl, setHamStatus }) => {
         </div>
 
         <div className="second-portion">
-          <span className="username">username</span>
+          <span className="username">{username}</span>
           <a href="#">
             <img
               src={profileImageUrl}
