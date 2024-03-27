@@ -30,6 +30,7 @@ const LoginComponent = () => {
       setIsLoading(false);
       return;
     }
+    axios.defaults.withCredentials = true;
 
     const response = await axios.post(
       "http://localhost:5500/login-me",
