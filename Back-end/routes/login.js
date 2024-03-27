@@ -14,11 +14,15 @@ const LoginRouter = (UserServices) => {
     const userObj = await UserServices.isUser(current_user);
     // receive true/false from server
     // req.session.user = userObj;
-    console.log(userObj);
+    if (userObj) {
+      console.log("Setting the session");
+      req.session.user = userObj;
+    }
     res.json(userObj);
   });
 
   Router.post("/register", async (req, res) => {
+    console.log(req.body);
     const message = await UserServices.addData(req.body);
     res.json(message);
   });
