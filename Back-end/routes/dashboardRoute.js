@@ -6,7 +6,7 @@ const DashboardRouter = () => {
     const data = req.session.user;
     console.log("Session Data has: ..");
     console.log(data);
-    return res.json({ data: `result is: ${data}` });
+    return res.json(data);
   });
 
   return Router;
