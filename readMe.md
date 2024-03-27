@@ -6,10 +6,10 @@ Read4UApp is a project that consists of both backend and frontend components. Th
 
 ## Backend Setup
 
-1. Navigate to the `backend` directory:
+1. Navigate to the `Back-end` directory:
 
    ```bash
-   cd backend
+   cd Back-end
    ```
 
 2. Install dependencies:
@@ -31,7 +31,7 @@ Read4UApp is a project that consists of both backend and frontend components. Th
 1. Navigate to the `frontend` directory:
 
    ```bash
-   cd frontend
+   cd Front-end
    ```
 
 2. Install dependencies:
