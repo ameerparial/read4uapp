@@ -3,6 +3,7 @@ import DashboardDataComponent from "./Navbar-data-components/Dashboard-data";
 import VoiceArtistsComponent from "./Navbar-data-components/Voice-artists-data";
 import LogoutComponent from "./Navbar-data-components/Logout-page";
 import ReadByComponent from "./Navbar-data-components/ReadBy-page";
+import AccountSettings from "./Navbar-data-components/Profile-Update";
 
 const Container = () => {
   const { route } = useParams();
@@ -19,7 +20,7 @@ const Container = () => {
     case "word-list":
       return <h1>Difficult word list</h1>;
     case "profile-setting":
-      return <h1>Account Setting</h1>;
+      return <AccountSettings />;
     case "logout":
       return <LogoutComponent />;
     default:
