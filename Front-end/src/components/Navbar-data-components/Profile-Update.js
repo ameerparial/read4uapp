@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 function AccountSettings() {
   const [formData, setFormData] = useState({
@@ -7,6 +8,23 @@ function AccountSettings() {
     password: "",
     confirmPassword: "",
   });
+
+  useEffect(function () {
+    async function getData() {
+      await axios
+        .get("http://localhost:5500/dashboard")
+        .then((response) => {
+          const username = response?.data?.username;
+          const email = response?.data?.email;
+          setFormData({ ...formData, username, email });
+        })
+        .catch((err) => {
+          console.log("Error while getting profile data...");
+          console.log(err);
+        });
+    }
+    getData();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,6 +47,7 @@ function AccountSettings() {
         maxWidth: "400px",
         boxShadow: "2px 2px 10px black",
         borderRadius: "10px",
+        margin: "0px auto",
         backgroundColor: "white",
         opacity: "90%",
         padding: "20px",
@@ -58,7 +77,7 @@ function AccountSettings() {
             className="inputField m-0 form-control"
             id="username"
             name="username"
-            value={formData.firstName}
+            value={formData.username}
             onChange={handleChange}
           />
         </div>
