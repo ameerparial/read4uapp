@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import ProfileImage from "../ProfileImage";
 
 function AccountSettings() {
   const [formData, setFormData] = useState({
@@ -54,7 +55,11 @@ function AccountSettings() {
       }}
     >
       <form onSubmit={handleSubmit}>
-        <div className="mb-3">
+        <div className="mb-0">
+          <ProfileImage />
+        </div>
+
+        <div className="mb-1">
           <label htmlFor="email" className="form-label">
             Email
           </label>
@@ -62,13 +67,13 @@ function AccountSettings() {
             type="email"
             className="inputField m-0 form-control"
             id="email"
-            disabled="true"
+            disabled={true}
             name="email"
             value={formData.email}
             onChange={handleChange}
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-1">
           <label htmlFor="username" className="form-label">
             Username
           </label>
@@ -82,7 +87,7 @@ function AccountSettings() {
           />
         </div>
 
-        <div className="mb-3">
+        <div className="mb-1">
           <label htmlFor="password" className="form-label">
             Password
           </label>
@@ -95,7 +100,7 @@ function AccountSettings() {
             onChange={handleChange}
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-1">
           <label htmlFor="confirmPassword" className="form-label">
             Confirm Password
           </label>

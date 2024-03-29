@@ -165,7 +165,7 @@ a.btn {
 }
 
 .dash-con {
-  margin-top: 40px;
+  margin-top: 10px;
 }
 
 .top-card-data {
@@ -224,4 +224,23 @@ a.btn {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.circular-image {
+  display: block;
+  text-align: center;
+}
+
+.image-display,
+.image-input {
+  margin-top: 4px;
+}
+.image-display img {
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+  border: 2px solid #022249;
+}
+label {
+  font-weight: bolder;
 }
