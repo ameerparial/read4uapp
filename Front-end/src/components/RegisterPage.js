@@ -2,8 +2,10 @@ import { useState } from "react";
 import ErrorComponent from "./ErrorPage";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import LoadingComponent from "./LoadingPage";
 
 const RegisterComponent = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const [registerData, setRegisterData] = useState({
     email: "",
@@ -20,23 +22,29 @@ const RegisterComponent = () => {
 
   const registerUser = async (event) => {
     event.preventDefault();
+    setErrors([]);
+    setIsLoading(true);
     console.log(registerData);
     if (registerData?.password.length < 8) {
       setErrors(["Password must contain at least 8 letters."]);
+      setIsLoading(false);
       return;
     }
 
-    const response = await axios.post(
-      "http://localhost:5500/login-me/register",
-      registerData
-    );
-
-    console.log(response.data);
-    if (response.data.status) {
-      navigate("/login");
-      return;
-    }
-    setErrors([response?.data?.msg]);
+    await axios
+      .post("http://localhost:5500/login-me/register", registerData)
+      .then((response) => {
+        if (response.data.status) {
+          navigate("/login");
+          return;
+        }
+        setErrors([response?.data?.msg]);
+      })
+      .catch((err) => {
+        console.log("Error occured while registration...");
+        setErrors([err.message]);
+      });
+    setIsLoading(false);
 
     //Handling Errors
     // 1-Email and Username must be unique
@@ -45,6 +53,7 @@ const RegisterComponent = () => {
 
   return (
     <>
+      <LoadingComponent isLoading={isLoading} />
       <div className="header">
         <h1 id="header-title">Welcome to R4U APP</h1>
       </div>

@@ -16,15 +16,21 @@ const DashboardComponent = () => {
     try {
       async function getUser() {
         axios.defaults.withCredentials = true;
-        const response = await axios.get("http://localhost:5500/dashboard");
-        console.log("Data....");
-        console.log(response.data);
-        if (response.data) {
-          console.log(response.data);
-          setUsername(response.data?.username);
-        } else {
-          navigate("/login");
-        }
+        await axios
+          .get("http://localhost:5500/dashboard")
+          .then((response) => {
+            if (response.data) {
+              console.log(response.data);
+              setUsername(response.data?.username);
+            } else {
+              navigate("/login");
+            }
+          })
+          .catch((err) => {
+            console.log("Error occured while moving to dashboard...");
+            console.log(err);
+            navigate("/login");
+          });
       }
       getUser();
     } catch (err) {

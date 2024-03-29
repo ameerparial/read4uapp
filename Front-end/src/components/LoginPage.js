@@ -17,13 +17,15 @@ const LoginComponent = () => {
     try {
       async function getData() {
         axios.defaults.withCredentials = true;
-        const response = await axios.get("http://localhost:5500/dashboard");
-        console.log(response.data);
-        if (response.data) {
-          navigate("/dashboard");
-        } else {
-          console.log("Session is not saved");
-        }
+        await axios
+          .get("http://localhost:5500/dashboard")
+          .then((response) => {
+            if (response?.data) navigate("/dashboard");
+            else console.log("Session is not saved");
+          })
+          .catch((err) => {
+            console.log("Error Occured while checking session....");
+          });
       }
       getData();
     } catch (err) {
@@ -39,6 +41,7 @@ const LoginComponent = () => {
 
   const checkCredentials = async (e) => {
     e.preventDefault();
+    setErrors([]);
     setIsLoading(true);
     //Checking the coming data
     console.log("Login Event");
@@ -50,17 +53,18 @@ const LoginComponent = () => {
     }
     axios.defaults.withCredentials = true;
 
-    const response = await axios.post(
-      "http://localhost:5500/login-me",
-      loginInfo
-    );
-    if (response.data) {
-      navigate("/dashboard");
-      setIsLoading(false);
-    } else {
-      setErrors(["Authentication Failed"]);
-      setIsLoading(false);
-    }
+    await axios
+      .post("http://localhost:5500/login-me", loginInfo)
+      .then((response) => {
+        if (response?.data) navigate("/dashboard");
+        else setErrors(["Authentication Failed"]);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log("Error Occured while logging....");
+        setErrors([err.message]);
+        setIsLoading(false);
+      });
   };
   return (
     <>
