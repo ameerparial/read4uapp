@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const TopBar = ({ username, profileImageUrl, setHamStatus }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,18 +24,18 @@ const TopBar = ({ username, profileImageUrl, setHamStatus }) => {
 
         <div className="second-portion">
           <span className="username">{username}</span>
-          <a href="#">
+          <NavLink to="profile-setting">
             <img
               src={profileImageUrl}
               alt="Profile"
               style={{
-                width: "50px",
-                height: "50px",
+                width: "40px",
+                height: "40px",
                 borderRadius: "50%",
                 border: "2px solid white",
               }}
             />
-          </a>
+          </NavLink>
         </div>
       </div>
     </>
