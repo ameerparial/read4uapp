@@ -38,22 +38,38 @@ function NavBar({ css }) {
           >
             <ul className="navbar-nav">
               <li className="nav-item me-3">
-                <a className="nav-link" href="#">
+                <a
+                  className="nav-link"
+                  href="#"
+                  onClick={() => setIsNavOpen(!isNavOpen)}
+                >
                   Home
                 </a>
               </li>
               <li className="nav-item me-3">
-                <a className="nav-link" href="#services">
+                <a
+                  className="nav-link"
+                  href="#services"
+                  onClick={() => setIsNavOpen(!isNavOpen)}
+                >
                   Services
                 </a>
               </li>
               <li className="nav-item me-3">
-                <a className="nav-link" href="#demo">
+                <a
+                  className="nav-link"
+                  href="#demo"
+                  onClick={() => setIsNavOpen(!isNavOpen)}
+                >
                   Demo
                 </a>
               </li>
               <li className="nav-item me-3">
-                <a className="nav-link" href="#about">
+                <a
+                  className="nav-link"
+                  href="#about"
+                  onClick={() => setIsNavOpen(!isNavOpen)}
+                >
                   About
                 </a>
               </li>
