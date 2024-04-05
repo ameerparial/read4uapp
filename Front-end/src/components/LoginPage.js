@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ErrorComponent from "./ErrorPage";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import LoadingComponent from "./LoadingPage";
 import axios from "axios";
 
@@ -75,6 +75,15 @@ const LoginComponent = () => {
 
       <div className="login-frame">
         <h1>Sign In</h1>
+        <div style={{ margin: "0px 15px" }}>
+          <NavLink
+            to={"/"}
+            style={{ color: "#df622c", textDecoration: "none" }}
+          >
+            <i class="fas fa-arrow-left me-1"></i>
+            Home
+          </NavLink>
+        </div>
         <form onSubmit={checkCredentials}>
           <div className="separator">
             <label className="labelField">Email:</label>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ErrorComponent from "./ErrorPage";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import LoadingComponent from "./LoadingPage";
 
@@ -60,6 +60,12 @@ const RegisterComponent = () => {
 
       <div className="login-frame">
         <h1>Register</h1>
+        <div style={{ marginLeft: "15px" }}>
+          <NavLink to={"/login"}>
+            <i class="fas fa-arrow-left" style={{ color: "#df622c" }}></i>
+          </NavLink>
+        </div>
+
         <form onSubmit={registerUser}>
           <div className="separator">
             <label className="labelField">Email:</label>
