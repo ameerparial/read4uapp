@@ -50,6 +50,16 @@ class UserDataService {
     return { status: true, msg: "Account Created Successfully." };
   }
 
+  async updateUser(updateUser) {
+    const users = await this.getData();
+    const updatedUsers = users.map((user) => {
+      if (user.email === updateUser.email) return { ...user, ...updateUser };
+      return user;
+    });
+    fs.writeFileSync(this.path, JSON.stringify(updatedUsers));
+    return { status: true, msg: "Update Successfully!" };
+  }
+
   async getData() {
     //1- Checking does file exist.
     if (!fs.existsSync(this.path)) {
