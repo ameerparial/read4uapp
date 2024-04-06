@@ -9,6 +9,11 @@ function AccountSettings() {
     password: "",
     confirmPassword: "",
   });
+  const [changes, setChanges] = useState({
+    profile: false,
+    username: false,
+    password: false,
+  });
 
   useEffect(function () {
     async function getData() {
@@ -29,6 +34,7 @@ function AccountSettings() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    setChanges({ ...changes, [name]: true });
     setFormData({
       ...formData,
       [name]: value,
@@ -37,9 +43,46 @@ function AccountSettings() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(changes);
+
     // Add your form submission logic here
-    console.log(formData);
-    // You can send this data to your backend API for further processing
+    const { file, username, email, password } = formData;
+    const form = new FormData();
+    form.append("email", email);
+    var toUpdate = false;
+    if (changes?.username) {
+      form.append("username", username);
+      toUpdate = true;
+    }
+    if (changes?.password) {
+      form.append("password", password);
+      toUpdate = true;
+    }
+    if (changes?.profile) {
+      form.append("file", file);
+      toUpdate = true;
+    }
+
+    console.log("Update Fields");
+    console.log(form);
+    console.log(changes);
+
+    if (!toUpdate) return;
+
+    axios
+      .post("http://localhost:5500/dashboard/profileUpdate", form)
+      .then((response) => {
+        console.log(response);
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleFileSubmit = (file) => {
+    setChanges({ ...changes, profile: true });
+    setFormData({ ...formData, file });
   };
 
   return (
@@ -56,7 +99,7 @@ function AccountSettings() {
     >
       <form onSubmit={handleSubmit}>
         <div className="mb-0">
-          <ProfileImage />
+          <ProfileImage onFileSelect={handleFileSubmit} />
         </div>
 
         <div className="mb-1">
