@@ -4,8 +4,20 @@ import UserDataService from "./services/UserdataService";
 import cors from "cors";
 import bodyParser from "body-parser";
 import session from "express-session";
-import DashboardRouter from "./routes/DashboardRoute";
 import LogoutRouter from "./routes/logoutRouter";
+import multer from "multer";
+import DashboardRouter from "./routes/dashboardRoute";
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    return cb(null, "./profiles/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, `${Date.now() + "-" + file.originalname}`);
+  },
+});
+
+const profileUploader = multer({ storage });
 
 const UserServices = new UserDataService("./data/RegisterAccounts.json");
 const app = express();
@@ -28,7 +40,7 @@ app.use(
   })
 );
 app.use("/login-me", LoginRouter(UserServices));
-app.use("/dashboard", DashboardRouter());
+app.use("/dashboard", DashboardRouter(profileUploader, UserServices));
 app.use("/logout", LogoutRouter());
 
 app.listen(5500, () => {
