@@ -1,7 +1,7 @@
 import { useState } from "react";
 import noProfileImage from "../images/profile-image.jpeg";
 
-const ProfileImage = () => {
+const ProfileImage = ({ onFileSelect }) => {
   const [profileImage, setProfileImage] = useState(null);
   const onChange = (e) => {
     const file = e.target.files[0];
@@ -12,6 +12,7 @@ const ProfileImage = () => {
       };
       reader.readAsDataURL(file);
     }
+    onFileSelect(file);
   };
   return (
     <div className="circular-image">
