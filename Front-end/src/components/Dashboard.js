@@ -4,9 +4,11 @@ import TopBar from "./TopBar";
 import SideNavbar from "./SideNavBar";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import noProfileImage from "../images/profile-image.jpeg";
 
 const DashboardComponent = () => {
   const [username, setUsername] = useState("username");
+  const [image, setImage] = useState(null);
   const [isTrue, setIsTrue] = useState(false);
   const navigate = useNavigate();
   const { route } = useParams();
@@ -22,6 +24,7 @@ const DashboardComponent = () => {
             if (response.data) {
               console.log(response.data);
               setUsername(response.data?.username);
+              setImage(response.data?.filename);
             } else {
               navigate("/login");
             }
@@ -42,7 +45,9 @@ const DashboardComponent = () => {
     <>
       <TopBar
         username={username}
-        profileImageUrl="https://source.unsplash.com/random/150x150"
+        profileImageUrl={
+          image ? `http://localhost:8080/${image}` : noProfileImage
+        }
         setHamStatus={setIsTrue}
       />
       <div className="container-fluid h-100">
