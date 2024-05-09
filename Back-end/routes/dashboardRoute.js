@@ -14,12 +14,15 @@ const DashboardRouter = (profileUploader, userServices) => {
     profileUploader.single("file"),
     async (req, res) => {
       const filename = req?.file?.filename;
+      const newUser = req?.session?.user;
       var updateUser = req.body;
       if (req?.file) updateUser = { ...updateUser, filename };
       // console.log("update object: ");
       // console.log(updateUser);
       // console.log("session");
-      req.session.user = updateUser;
+
+      req.session.user = { ...newUser, ...updateUser };
+      console.log(req.session.user);
       const status = await userServices.updateUser(updateUser);
       res.json(status);
     }
