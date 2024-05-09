@@ -118,9 +118,9 @@ const LoginComponent = () => {
 
           <div className="separator">
             <div className="d-flex">
-              <a type="button" className="btn" href="/register">
+              <NavLink type="button" className="btn" to="/register">
                 Register
-              </a>
+              </NavLink>
               <input
                 type="submit"
                 value="Sign in"
