@@ -44,6 +44,6 @@ app.use("/login-me", LoginRouter(UserServices));
 app.use("/dashboard", DashboardRouter(profileUploader, UserServices));
 app.use("/logout", LogoutRouter());
 
-app.listen(8080, () => {
-  console.log("Listening at the port 8080...");
+app.listen(5000, () => {
+  console.log("Listening at the port 5000...");
 });
