@@ -62,7 +62,7 @@ const RegisterComponent = () => {
         <h1>Register</h1>
         <div style={{ marginLeft: "15px" }}>
           <NavLink to={"/login"}>
-            <i class="fas fa-arrow-left" style={{ color: "#df622c" }}></i>
+            <i className="fas fa-arrow-left" style={{ color: "#df622c" }}></i>
           </NavLink>
         </div>
 

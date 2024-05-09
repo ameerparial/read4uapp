@@ -80,7 +80,7 @@ const LoginComponent = () => {
             to={"/"}
             style={{ color: "#df622c", textDecoration: "none" }}
           >
-            <i class="fas fa-arrow-left me-1"></i>
+            <i className="fas fa-arrow-left me-1"></i>
             Home
           </NavLink>
         </div>
