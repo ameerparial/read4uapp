@@ -18,7 +18,7 @@ function NavBar({ css }) {
                 color: css === "home-top-nav-before" ? "#022249" : "white",
               }}
             >
-              Read4U
+              ReadSpeak
             </span>
           </a>
           <button

@@ -62,7 +62,7 @@ const RegisterComponent = () => {
     <>
       <LoadingComponent isLoading={isLoading} />
       <div className="header">
-        <h1 id="header-title">Welcome to R4U APP</h1>
+        <h1 id="header-title">Welcome to ReadSpeak APP</h1>
       </div>
 
       <div className="login-frame">

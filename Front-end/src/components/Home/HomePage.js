@@ -6,7 +6,7 @@ const HomePage = () => {
           <div className="col-md-6">
             <div id="banner-title">
               <h1 className="title" id="heading">
-                Welcome to Read4U APP
+                Welcome to ReadSpeak APP
               </h1>
               <p className={`lead`} id="ban-para">
                 Immerse yourself in the world of literature with our innovative
