@@ -11,6 +11,7 @@ const RegisterComponent = () => {
     email: "",
     username: "",
     password: "",
+    confirmPassword: "",
   });
   const [errors, setErrors] = useState([]);
 
@@ -24,6 +25,12 @@ const RegisterComponent = () => {
     event.preventDefault();
     setErrors([]);
     setIsLoading(true);
+
+    if (registerData?.password !== registerData?.confirmPassword) {
+      setErrors(["Password does not Match."]);
+      setIsLoading(false);
+      return;
+    }
     console.log(registerData);
     if (registerData?.password.length < 8) {
       setErrors(["Password must contain at least 8 letters."]);
@@ -98,6 +105,17 @@ const RegisterComponent = () => {
               type="password"
               name="password"
               value={registerData?.password}
+              onChange={getData}
+              className="inputField"
+              required
+            />
+          </div>
+          <div className="separator">
+            <label className="labelField">Confirmed Password:</label>
+            <input
+              type="password"
+              name="confirmPassword"
+              value={registerData?.confirmPassword}
               onChange={getData}
               className="inputField"
               required
