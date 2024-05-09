@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ProfileImage from "../ProfileImage";
+import noProfileImage from "../../images/profile-image.jpeg";
 
 function AccountSettings() {
   const [formData, setFormData] = useState({
@@ -9,28 +10,38 @@ function AccountSettings() {
     password: "",
     confirmPassword: "",
   });
+  const [profileImage, setProfileImage] = useState(null);
   const [changes, setChanges] = useState({
     profile: false,
     username: false,
     password: false,
   });
 
-  useEffect(function () {
-    async function getData() {
-      await axios
-        .get("http://localhost:8080/dashboard")
-        .then((response) => {
-          const username = response?.data?.username;
-          const email = response?.data?.email;
-          setFormData({ ...formData, username, email });
-        })
-        .catch((err) => {
-          console.log("Error while getting profile data...");
-          console.log(err);
-        });
-    }
-    getData();
-  }, []);
+  useEffect(
+    function () {
+      async function getData() {
+        await axios
+          .get("http://localhost:8080/dashboard")
+          .then((response) => {
+            const username = response?.data?.username;
+            const email = response?.data?.email;
+            const filename = response?.data?.filename;
+            if (filename) {
+              console.log("Profile Image Updated");
+              console.log(filename);
+              setProfileImage(`http://localhost:8080/${filename}`);
+            }
+            setFormData({ ...formData, username, email });
+          })
+          .catch((err) => {
+            console.log("Error while getting profile data...");
+            console.log(err);
+          });
+      }
+      getData();
+    },
+    [profileImage]
+  );
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,7 +57,13 @@ function AccountSettings() {
     console.log(changes);
 
     // Add your form submission logic here
-    const { file, username, email, password } = formData;
+    const { file, username, email, password, confirmPassword } = formData;
+
+    if (password !== confirmPassword) {
+      alert("Password does not Match.");
+      return;
+    }
+
     const form = new FormData();
     form.append("email", email);
     var toUpdate = false;
@@ -99,7 +116,10 @@ function AccountSettings() {
     >
       <form onSubmit={handleSubmit}>
         <div className="mb-0">
-          <ProfileImage onFileSelect={handleFileSubmit} />
+          <ProfileImage
+            onFileSelect={handleFileSubmit}
+            profile={profileImage ? profileImage : noProfileImage}
+          />
         </div>
 
         <div className="mb-1">

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import noProfileImage from "../images/profile-image.jpeg";
 
-const ProfileImage = ({ onFileSelect }) => {
-  const [profileImage, setProfileImage] = useState(null);
+const ProfileImage = ({ onFileSelect, profile }) => {
+  const [profileImage, setProfileImage] = useState(profile);
+  console.log(profileImage);
   const onChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -18,10 +18,7 @@ const ProfileImage = ({ onFileSelect }) => {
     <div className="circular-image">
       <div className="image-display">
         <a>
-          <img
-            src={profileImage != null ? profileImage : noProfileImage}
-            alt="no image found!"
-          />
+          <img src={profileImage} alt="no image found!" />
         </a>
       </div>
       <div className="image-input">
