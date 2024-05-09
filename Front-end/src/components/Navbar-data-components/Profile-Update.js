@@ -18,7 +18,7 @@ function AccountSettings() {
   useEffect(function () {
     async function getData() {
       await axios
-        .get("http://localhost:5500/dashboard")
+        .get("http://localhost:8080/dashboard")
         .then((response) => {
           const username = response?.data?.username;
           const email = response?.data?.email;
@@ -70,7 +70,7 @@ function AccountSettings() {
     if (!toUpdate) return;
 
     axios
-      .post("http://localhost:5500/dashboard/profileUpdate", form)
+      .post("http://localhost:8080/dashboard/profileUpdate", form)
       .then((response) => {
         console.log(response);
         window.location.reload();

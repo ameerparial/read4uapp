@@ -7,7 +7,7 @@ const LogoutComponent = () => {
 
     try {
       console.log("Logging out...");
-      const response = await axios.get("http://localhost:5500/logout");
+      const response = await axios.get("http://localhost:8080/logout");
       console.log(response);
       if (response.data.logout) {
         navigate("/");

@@ -17,7 +17,7 @@ const DashboardComponent = () => {
       async function getUser() {
         axios.defaults.withCredentials = true;
         await axios
-          .get("http://localhost:5500/dashboard")
+          .get("http://localhost:8080/dashboard")
           .then((response) => {
             if (response.data) {
               console.log(response.data);

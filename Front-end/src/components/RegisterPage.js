@@ -32,7 +32,7 @@ const RegisterComponent = () => {
     }
 
     await axios
-      .post("http://localhost:5500/login-me/register", registerData)
+      .post("http://localhost:8080/login-me/register", registerData)
       .then((response) => {
         if (response.data.status) {
           navigate("/login");

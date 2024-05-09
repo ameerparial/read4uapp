@@ -24,7 +24,7 @@ Read4UApp is a project that consists of both backend and frontend components. Th
    npm start
    ```
 
-   The backend server will start running at `http://localhost:5500`.
+   The backend server will start running at `http://localhost:8080`.
 
 ## Frontend Setup
 
@@ -53,7 +53,7 @@ Read4UApp is a project that consists of both backend and frontend components. Th
 Once both the backend and frontend servers are running, you can access the Read4UApp in your web browser:
 
 - Frontend: [http://localhost:3000](http://localhost:3000)
-- Backend: [http://localhost:5500](http://localhost:5500)
+- Backend: [http://localhost:8080](http://localhost:8080)
 
 ## Additional Notes
 
